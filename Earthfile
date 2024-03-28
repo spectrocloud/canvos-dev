@@ -330,9 +330,9 @@ base-image:
         RUN if [ ! -e /usr/bin/apparmor_parser ]; then cp /sbin/apparmor_parser /usr/bin/apparmor_parser; fi
     END
     IF [ "$ARCH" = "arm64" ]
-        ARG LUET_REPO=luet-repo-arm
+        ARG LUET_REPO=luet-dev-repo-arm
     ELSE IF [ "$ARCH" = "amd64" ]
-        ARG LUET_REPO=luet-repo
+        ARG LUET_REPO=luet-dev-repo
     END
     RUN  mkdir -p /etc/luet/repos.conf.d && \
           SPECTRO_LUET_VERSION=$SPECTRO_LUET_VERSION luet repo add spectro --type docker --url $SPECTRO_LUET_REPO/$LUET_REPO --priority 1 -y && \
