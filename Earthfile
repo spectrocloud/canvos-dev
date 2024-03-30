@@ -45,7 +45,7 @@ ARG PROXY_CERT_PATH
 
 ARG UPDATE_KERNEL=false
 
-ARG ETCD_VERSION="v3.5.5"
+ARG ETCD_VERSION="v3.5.13"
 
 IF [ "$OS_DISTRIBUTION" = "ubuntu" ] && [ "$BASE_IMAGE" = "" ]
     IF [ "$OS_VERSION" == 22 ] || [ "$OS_VERSION" == 20 ]
