@@ -11,7 +11,7 @@ FROM $SPECTRO_PUB_REPO/canvos/alpine-cert:v1.0.0
 
 ## Spectro Cloud and Kairos Tags ##
 ARG PE_VERSION=v4.3.2
-ARG SPECTRO_LUET_VERSION=v1.2.7
+ARG SPECTRO_LUET_VERSION=v4.4.0-alpha1
 ARG KAIROS_VERSION=v2.4.5
 ARG K3S_FLAVOR_TAG=k3s1
 ARG RKE2_FLAVOR_TAG=rke2r1
@@ -373,9 +373,9 @@ base-image:
         RUN if [ ! -e /usr/bin/apparmor_parser ]; then cp /sbin/apparmor_parser /usr/bin/apparmor_parser; fi
     END
     IF [ "$ARCH" = "arm64" ]
-        ARG LUET_REPO=luet-repo-arm
+        ARG LUET_REPO=luet-dev-repo-arm
     ELSE IF [ "$ARCH" = "amd64" ]
-        ARG LUET_REPO=luet-repo
+        ARG LUET_REPO=luet-dev-repo
     END
     RUN  mkdir -p /etc/luet/repos.conf.d && \
           SPECTRO_LUET_VERSION=$SPECTRO_LUET_VERSION luet repo add spectro --type docker --url $SPECTRO_LUET_REPO/$LUET_REPO --priority 1 -y && \
